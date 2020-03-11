@@ -13,6 +13,10 @@ pipeline {
                 bat 'npm run build'
             }
         }
-       
+       stage('Test') {
+            steps {
+                bat './jenkins/scripts/test.sh'
+            }
+        }
     }
 }
