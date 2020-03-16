@@ -11,11 +11,16 @@ pipeline {
         }
  
       stage('SonarQube analysis') {
-        def scannerHome = tool 'sonar-scanner';
-        withSonarQubeEnv('sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+      steps {
+        script {
+          // requires SonarQube Scanner 2.8+
+          scannerHome = tool 'sonar-scanner'
+        }
+        withSonarQubeEnv('sonarqube-server') {
           sh "${scannerHome}/bin/sonar-scanner"
         }
-       }
+      }
+    }
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
