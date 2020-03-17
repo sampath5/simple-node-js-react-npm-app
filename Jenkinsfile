@@ -10,7 +10,7 @@ pipeline {
             }
         }
  
-      stage('SonarQube analysis') {
+     /* stage('SonarQube analysis') {
       steps {
         script {
           // requires SonarQube Scanner 2.8+
@@ -20,7 +20,7 @@ pipeline {
           sh "${scannerHome}/bin/sonar-scanner"
         }
       }
-    }
+    }*/
         stage('Test') {
             steps {
                 sh './jenkins/scripts/test.sh'
